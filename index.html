@@ -341,21 +341,21 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-            const headerNav = document.querySelector('.header-nav');
+            const navMenu = document.querySelector('.nav-menu');
 
-            if (mobileMenuToggle && headerNav) {
+            if (mobileMenuToggle && navMenu) {
                 // Simple toggle functionality
                 mobileMenuToggle.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
-                    headerNav.classList.toggle('active');
+                    navMenu.classList.toggle('active');
                     mobileMenuToggle.classList.toggle('active');
                 });
 
                 // Close menu when clicking outside
                 document.addEventListener('click', function(event) {
                     if (!event.target.closest('.header-container')) {
-                        headerNav.classList.remove('active');
+                        navMenu.classList.remove('active');
                         mobileMenuToggle.classList.remove('active');
                     }
                 });
@@ -364,7 +364,7 @@
                 const menuLinks = document.querySelectorAll('.header-nav .nav-link');
                 menuLinks.forEach(link => {
                     link.addEventListener('click', function() {
-                        headerNav.classList.remove('active');
+                        navMenu.classList.remove('active');
                         mobileMenuToggle.classList.remove('active');
                     });
                 });
