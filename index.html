@@ -81,19 +81,19 @@
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
                 <!-- Logo -->
-                <a href="https://billlayneinsurance.com/" class="text-2xl font-bold text-white md:text-gray-900">
+                <a href="https://billlayneinsurance.com/" class="text-2xl font-bold text-white md:text-white" id="headerLogo">
                     Bill Layne Insurance
                 </a>
                 
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex items-center space-x-6">
-                    <a href="https://billlayne.github.io/Auto-Insurance-Center/" class="nav-link text-gray-900 hover:text-blue-600 transition">Auto</a>
-                    <a href="https://billlayne.github.io/NC-Home-Insurance.github.io/" class="nav-link text-gray-900 hover:text-blue-600 transition">Home</a>
-                    <a href="https://billlayneinsurance.com/areas-we-serve.html" class="nav-link text-gray-900 hover:text-blue-600 transition">Services</a>
-                    <a href="https://billlayne.github.io/NC-Insurance-Claims-Center.github.io/" class="nav-link text-gray-900 hover:text-blue-600 transition">Claims</a>
-                    <a href="#" class="nav-link text-blue-600 font-semibold">Resources</a>
-                    <a href="https://billlayneinsurance.com/blog" class="nav-link text-gray-900 hover:text-blue-600 transition">Blog</a>
-                    <a href="https://billlayneinsurance.com/contact-us.html" class="nav-link text-gray-900 hover:text-blue-600 transition">Contact</a>
+                    <a href="https://billlayne.github.io/Auto-Insurance-Center/" class="nav-link text-white hover:text-gray-300 transition">Auto</a>
+                    <a href="https://billlayne.github.io/NC-Home-Insurance.github.io/" class="nav-link text-white hover:text-gray-300 transition">Home</a>
+                    <a href="https://billlayneinsurance.com/areas-we-serve.html" class="nav-link text-white hover:text-gray-300 transition">Services</a>
+                    <a href="https://billlayne.github.io/NC-Insurance-Claims-Center.github.io/" class="nav-link text-white hover:text-gray-300 transition">Claims</a>
+                    <a href="#" class="nav-link text-blue-300 font-semibold">Resources</a>
+                    <a href="https://billlayneinsurance.com/blog" class="nav-link text-white hover:text-gray-300 transition">Blog</a>
+                    <a href="https://billlayneinsurance.com/contact-us.html" class="nav-link text-white hover:text-gray-300 transition">Contact</a>
                 </nav>
                 
                 <!-- CTA Button -->
@@ -132,14 +132,14 @@
     </a>
     
     <!-- Hero Section -->
-    <section class="relative pt-20 pb-16 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
-        <div class="absolute inset-0 bg-black opacity-20"></div>
+    <section class="relative pt-20 pb-16 bg-blue-600 text-white" style="background-image: url('https://github.com/BillLayne/bill-layne-images/blob/main/logos/resources.png?raw=true'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
         <div class="container relative mx-auto px-4 py-16">
             <div class="text-center max-w-3xl mx-auto">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight drop-shadow-lg">
                     Insurance Tools & Resources
                 </h1>
-                <p class="text-xl md:text-2xl opacity-90">
+                <p class="text-xl md:text-2xl opacity-90 drop-shadow-md">
                     Free tools and guides to help you make informed insurance decisions
                 </p>
             </div>
@@ -541,13 +541,49 @@
         
         // Header scroll effect
         const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
+        const headerLogo = document.getElementById('headerLogo');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        function styleHeader() {
+            const isScrolled = window.scrollY > 100;
+            
+            if (isScrolled) {
                 header.classList.add('header-scrolled');
+                // Change logo to amber when scrolled
+                headerLogo.classList.remove('text-white', 'md:text-white');
+                headerLogo.classList.add('text-amber-800');
+                
+                // Change nav links to dark when scrolled
+                navLinks.forEach(link => {
+                    if (link.textContent === 'Resources') {
+                        link.classList.remove('text-blue-300');
+                        link.classList.add('text-blue-600');
+                    } else {
+                        link.classList.remove('text-white', 'hover:text-gray-300');
+                        link.classList.add('text-gray-900', 'hover:text-blue-600');
+                    }
+                });
             } else {
                 header.classList.remove('header-scrolled');
+                // Change logo back to white when not scrolled
+                headerLogo.classList.remove('text-amber-800');
+                headerLogo.classList.add('text-white', 'md:text-white');
+                
+                // Change nav links back to white when not scrolled
+                navLinks.forEach(link => {
+                    if (link.textContent === 'Resources') {
+                        link.classList.remove('text-blue-600');
+                        link.classList.add('text-blue-300');
+                    } else {
+                        link.classList.remove('text-gray-900', 'hover:text-blue-600');
+                        link.classList.add('text-white', 'hover:text-gray-300');
+                    }
+                });
             }
-        });
+        }
+        
+        window.addEventListener('scroll', styleHeader);
+        window.addEventListener('resize', styleHeader);
     </script>
 </body>
 </html>
