@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homeowners Coverage Estimator | Bill Layne Insurance Agency</title>
+    <meta name="description" content="Educational tool to estimate homeowners insurance replacement costs and coverage needs in North Carolina. For informational purposes only.">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Header styles matching the main site */
+        #main-header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Custom form styling */
+        .form-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .form-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .step-indicator {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .step-indicator.completed {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .coverage-option {
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .coverage-option:hover {
+            border-color: #10b981;
+            background-color: #f0fdf4;
+        }
+
+        .coverage-option.selected {
+            border-color: #10b981;
+            background-color: #ecfdf5;
+        }
+
+        .coverage-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            border-left: 4px solid #10b981;
+        }
+
+        .recommendation-badge {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .disclaimer-badge {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .form-card {
+                margin: 0 16px;
+                border-radius: 12px;
+            }
+            
+            .coverage-option {
+                padding: 16px;
+            }
+            
+            .coverage-card {
+                padding: 20px;
+            }
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            background: #e5e7eb;
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            height: 100%;
+            transition: width 0.5s ease;
+        }
+
+        /* Animation for results */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Disclaimer styling */
+        .disclaimer-box {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .legal-disclaimer {
+            background: #fef2f2;
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        /* Tooltip styling */
+        .tooltip {
+            position: relative;
+            cursor: help;
+        }
+
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            background: #1f2937;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            white-space: nowrap;
+            z-index: 1000;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 8px;
+        }
+
+        .tooltip:hover::before {
+            content: '';
+            position: absolute;
+            border: 6px solid transparent;
+            border-top-color: #1f2937;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 2px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header matching main site -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="https://billlayneinsurance.com/" class="text-gray-800 text-2xl font-bold">
+                    Bill Layne Insurance
+                </a>
+                
+                <!-- Back to Resources -->
+                <div class="flex items-center space-x-4">
+                    <a href="./" class="text-green-600 hover:text-green-700 flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        <span class="hidden sm:inline">Back to Resources</span>
+                    </a>
+                    <a href="tel:3368351993" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                        <i class="fas fa-phone mr-2"></i>
+                        <span class="hidden sm:inline">(336) 835-1993</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-8 bg-green-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto">
+                <i class="fas fa-home text-5xl mb-4"></i>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+                    Homeowners Coverage Estimator
+                </h1>
+                <p class="text-lg md:text-xl opacity-90 mb-4">
+                    Educational tool to estimate replacement costs and coverage needs for your home
+                </p>
+                <div class="disclaimer-badge">
+                    FOR EDUCATIONAL PURPOSES ONLY
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Disclaimer -->
+    <div class="container mx-auto px-4 py-4">
+        <div class="legal-disclaimer">
+            <div class="flex items-start">
+                <i class="fas fa-exclamation-triangle text-red-500 mr-3 mt-1 text-xl"></i>
+                <div>
+                    <h3 class="font-bold text-red-800 mb-2">IMPORTANT DISCLAIMER</h3>
+                    <p class="text-red-700 text-sm leading-relaxed">
+                        This tool provides <strong>estimates only</strong> for educational purposes. Results are not quotes, guarantees, or binding coverage amounts. 
+                        Actual replacement costs, coverage needs, and premiums vary significantly based on many factors not captured here. 
+                        Consult with a licensed insurance agent for accurate quotes and professional advice tailored to your specific situation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-gray-600" id="progressText">Step 1 of 4: Home Information</span>
+                <span class="text-sm text-gray-500" id="progressPercent">25%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 25%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Step 1: Home Information -->
+        <div id="step1" class="step-content">
+            <div class="form-card p-6 md:p-8 max-w-2xl mx-auto">
+                <div class="flex items-center mb-6">
+                    <div class="step-indicator mr-4">1</div>
+                    <h2 class="text-2xl font-bold text-gray-800">Home Information</h2>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Home Size (Square Feet)</label>
+                            <input type="number" id="homeSize" min="500" max="10000" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" 
+                                   placeholder="2,000">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Year Built</label>
+                            <input type="number" id="yearBuilt" min="1800" max="2025" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" 
+                                   placeholder="2000">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Construction Type</label>
+                        <div class="grid md:grid-cols-3 gap-3">
+                            <div class="coverage-option" data-construction="frame">
+                                <i class="fas fa-tree text-amber-600 text-xl mb-2"></i>
+                                <h4 class="font-medium">Wood Frame</h4>
+                                <p class="text-sm text-gray-600">Traditional wood construction</p>
+                            </div>
+                            <div class="coverage-option" data-construction="brick">
+                                <i class="fas fa-building text-red-600 text-xl mb-2"></i>
+                                <h4 class="font-medium">Brick/Masonry</h4>
+                                <p class="text-sm text-gray-600">Brick veneer or solid masonry</p>
+                            </div>
+                            <div class="coverage-option" data-construction="other">
+                                <i class="fas fa-home text-gray-600 text-xl mb-2"></i>
+                                <h4 class="font-medium">Other Materials</h4>
+                                <p class="text-sm text-gray-600">Stucco, vinyl, steel, etc.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Stories</label>
+                            <select id="stories" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                <option value="">Select</option>
+                                <option value="1">1 Story</option>
+                                <option value="1.5">1.5 Story</option>
+                                <option value="2">2 Story</option>
+                                <option value="3">3+ Story</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Location Type</label>
+                            <select id="locationType" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                <option value="">Select area</option>
+                                <option value="urban">Urban/City</option>
+                                <option value="suburban">Suburban</option>
+                                <option value="rural">Rural/Country</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="nextStep(2)" class="w-full mt-8 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition disabled:opacity-50 disabled:cursor-not-allowed" id="step1Next" disabled>
+                    Continue to Property Details <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 2: Property Details -->
+        <div id="step2" class="step-content hidden">
+            <div class="form-card p-6 md:p-8 max-w-2xl mx-auto">
+                <div class="flex items-center mb-6">
+                    <div class="step-indicator mr-4">2</div>
+                    <h2 class="text-2xl font-bold text-gray-800">Property Details</h2>
+                </div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Home Features (Check all that apply)</label>
+                        <div class="grid md:grid-cols-2 gap-3">
+                            <label class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50">
+                                <input type="checkbox" id="fireplace" class="text-green-600 focus:ring-green-500">
+                                <span>Fireplace(s)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50">
+                                <input type="checkbox" id="deck" class="text-green-600 focus:ring-green-500">
+                                <span>Deck/Patio</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50">
+                                <input type="checkbox" id="pool" class="text-green-600 focus:ring-green-500">
+                                <span>Swimming Pool</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50">
+                                <input type="checkbox" id="garage" class="text-green-600 focus:ring-green-500">
+                                <span>Attached Garage</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50">
+                                <input type="checkbox" id="basement" class="text-green-600 focus:ring-green-500">
+                                <span>Finished Basement</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50">
+                                <input type="checkbox" id="upgrades" class="text-green-600 focus:ring-green-500">
+                                <span>Recent Upgrades</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                Personal Property Value 
+                                <span class="tooltip text-blue-500" data-tooltip="Furniture, electronics, clothing, jewelry, etc.">
+                                    <i class="fas fa-info-circle"></i>
+                                </span>
+                            </label>
+                            <select id="personalProperty" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                <option value="">Estimate total value</option>
+                                <option value="25000">Under $25,000</option>
+                                <option value="50000">$25,000 - $50,000</option>
+                                <option value="75000">$50,000 - $75,000</option>
+                                <option value="100000">$75,000 - $100,000</option>
+                                <option value="150000">$100,000 - $150,000</option>
+                                <option value="200000">Over $150,000</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                High-Value Items 
+                                <span class="tooltip text-blue-500" data-tooltip="Jewelry, art, collectibles over $2,500 each">
+                                    <i class="fas fa-info-circle"></i>
+                                </span>
+                            </label>
+                            <select id="highValue" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                <option value="">Select range</option>
+                                <option value="none">None or minimal</option>
+                                <option value="some">$5,000 - $25,000</option>
+                                <option value="significant">$25,000 - $100,000</option>
+                                <option value="extensive">Over $100,000</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Home Condition</label>
+                        <div class="grid md:grid-cols-3 gap-3">
+                            <div class="coverage-option" data-condition="excellent">
+                                <i class="fas fa-star text-yellow-500 text-xl mb-2"></i>
+                                <h4 class="font-medium">Excellent</h4>
+                                <p class="text-sm text-gray-600">Well-maintained, recent updates</p>
+                            </div>
+                            <div class="coverage-option" data-condition="good">
+                                <i class="fas fa-thumbs-up text-green-500 text-xl mb-2"></i>
+                                <h4 class="font-medium">Good</h4>
+                                <p class="text-sm text-gray-600">Average maintenance, some wear</p>
+                            </div>
+                            <div class="coverage-option" data-condition="fair">
+                                <i class="fas fa-tools text-orange-500 text-xl mb-2"></i>
+                                <h4 class="font-medium">Fair</h4>
+                                <p class="text-sm text-gray-600">Needs some repairs/updates</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="nextStep(3)" class="w-full mt-8 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition disabled:opacity-50 disabled:cursor-not-allowed" id="step2Next" disabled>
+                    Continue to Coverage Preferences <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 3: Coverage Preferences -->
+        <div id="step3" class="step-content hidden">
+            <div class="form-card p-6 md:p-8 max-w-2xl mx-auto">
+                <div class="flex items-center mb-6">
+                    <div class="step-indicator mr-4">3</div>
+                    <h2 class="text-2xl font-bold text-gray-800">Coverage Preferences</h2>
+                </div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Risk Tolerance</label>
+                        <div class="grid md:grid-cols-3 gap-3">
+                            <div class="coverage-option" data-risk="conservative">
+                                <i class="fas fa-shield-alt text-blue-500 text-xl mb-2"></i>
+                                <h4 class="font-medium">Conservative</h4>
+                                <p class="text-sm text-gray-600">Maximum protection</p>
+                            </div>
+                            <div class="coverage-option" data-risk="moderate">
+                                <i class="fas fa-balance-scale text-green-500 text-xl mb-2"></i>
+                                <h4 class="font-medium">Moderate</h4>
+                                <p class="text-sm text-gray-600">Balanced approach</p>
+                            </div>
+                            <div class="coverage-option" data-risk="aggressive">
+                                <i class="fas fa-dollar-sign text-orange-500 text-xl mb-2"></i>
+                                <h4 class="font-medium">Cost-Conscious</h4>
+                                <p class="text-sm text-gray-600">Essential coverage only</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Deductible</label>
+                            <select id="deductible" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                <option value="">Select amount</option>
+                                <option value="500">$500 (Higher premium)</option>
+                                <option value="1000">$1,000 (Balanced)</option>
+                                <option value="2500">$2,500 (Lower premium)</option>
+                                <option value="5000">$5,000 (Lowest premium)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Distance to Fire Station</label>
+                            <select id="fireStation" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                                <option value="">Select distance</option>
+                                <option value="close">Under 3 miles</option>
+                                <option value="moderate">3-8 miles</option>
+                                <option value="far">Over 8 miles</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Additional Concerns (Check all that apply)</label>
+                        <div class="grid md:grid-cols-2 gap-3">
+                            <label class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50">
+                                <input type="checkbox" id="flood" class="text-green-600 focus:ring-green-500">
+                                <span>Flood risk area</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50">
+                                <input type="checkbox" id="earthquake" class="text-green-600 focus:ring-green-500">
+                                <span>Earthquake concerns</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50">
+                                <input type="checkbox" id="homeOffice" class="text-green-600 focus:ring-green-500">
+                                <span>Home office/business</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 border rounded-lg hover:bg-gray-50">
+                                <input type="checkbox" id="rentalIncome" class="text-green-600 focus:ring-green-500">
+                                <span>Rental income property</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button onclick="nextStep(4)" class="w-full mt-8 bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition disabled:opacity-50 disabled:cursor-not-allowed" id="step3Next" disabled>
+                    Get My Estimate <i class="fas fa-calculator ml-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 4: Results -->
+        <div id="step4" class="step-content hidden">
+            <div class="fade-in">
+                <!-- Another Disclaimer Before Results -->
+                <div class="disclaimer-box mb-8">
+                    <div class="flex items-start">
+                        <i class="fas fa-exclamation-triangle text-yellow-600 mr-3 mt-1"></i>
+                        <div>
+                            <h3 class="font-semibold text-yellow-800 mb-2">Remember: These Are Estimates Only</h3>
+                            <p class="text-yellow-700 text-sm">
+                                The following estimates are for educational purposes only and should not be considered professional advice or binding quotes. 
+                                Actual coverage needs and costs vary significantly based on many factors not captured in this simple tool.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Replacement Cost Estimate -->
+                <div class="form-card p-6 md:p-8 mb-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center">
+                            <div class="step-indicator completed mr-4">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-800">Estimated Replacement Cost</h2>
+                        </div>
+                        <span class="disclaimer-badge">ESTIMATE ONLY</span>
+                    </div>
+                    
+                    <div id="replacementCostContent">
+                        <!-- Content will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Coverage Recommendations -->
+                <div class="form-card p-6 md:p-8 mb-8" id="coverageRecommendations">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center">
+                            <div class="step-indicator completed mr-4">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-800">Coverage Recommendations</h2>
+                        </div>
+                        <span class="recommendation-badge">EDUCATIONAL</span>
+                    </div>
+                    
+                    <div id="recommendationContent">
+                        <!-- Content will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- NC Specific Considerations -->
+                <div class="form-card p-6 md:p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                        <i class="fas fa-map-marker-alt text-blue-500 mr-3"></i>
+                        North Carolina Considerations
+                    </h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="coverage-card">
+                            <h4 class="font-semibold text-gray-800 mb-3">Weather-Related Risks</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-start">
+                                    <i class="fas fa-wind text-blue-500 mr-2 mt-0.5"></i>
+                                    <span>Hurricane and wind damage coverage essential</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-bolt text-yellow-500 mr-2 mt-0.5"></i>
+                                    <span>Thunderstorm and hail damage common</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-snowflake text-blue-300 mr-2 mt-0.5"></i>
+                                    <span>Occasional ice storm damage</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-water text-blue-600 mr-2 mt-0.5"></i>
+                                    <span>Flood insurance typically separate policy</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="coverage-card">
+                            <h4 class="font-semibold text-gray-800 mb-3">Regional Factors</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-start">
+                                    <i class="fas fa-hammer text-orange-500 mr-2 mt-0.5"></i>
+                                    <span>Construction costs vary by region</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-fire text-red-500 mr-2 mt-0.5"></i>
+                                    <span>Fire protection services affect rates</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-chart-line text-green-500 mr-2 mt-0.5"></i>
+                                    <span>Property values increasing statewide</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-shield-alt text-purple-500 mr-2 mt-0.5"></i>
+                                    <span>Building codes updated after disasters</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Protection Options -->
+                <div class="form-card p-6 md:p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Additional Protection to Consider</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="coverage-card">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-semibold text-gray-800">Flood Insurance</h4>
+                                <span class="text-sm text-blue-600 font-medium">Separate Policy</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-3">Standard homeowners insurance does not cover flood damage</p>
+                            <div class="text-xs text-gray-500">
+                                <i class="fas fa-info-circle mr-1"></i>
+                                Available through NFIP or private insurers
+                            </div>
+                        </div>
+                        
+                        <div class="coverage-card">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-semibold text-gray-800">Earthquake Coverage</h4>
+                                <span class="text-sm text-blue-600 font-medium">Add-on Available</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-3">Optional coverage for earthquake damage</p>
+                            <div class="text-xs text-gray-500">
+                                <i class="fas fa-info-circle mr-1"></i>
+                                Lower risk in NC, but coverage available
+                            </div>
+                        </div>
+                        
+                        <div class="coverage-card">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-semibold text-gray-800">Umbrella Policy</h4>
+                                <span class="text-sm text-blue-600 font-medium">Extra Liability</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-3">Additional liability protection beyond home policy limits</p>
+                            <div class="text-xs text-gray-500">
+                                <i class="fas fa-info-circle mr-1"></i>
+                                Recommended for higher net worth
+                            </div>
+                        </div>
+                        
+                        <div class="coverage-card">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-semibold text-gray-800">Home Business Coverage</h4>
+                                <span class="text-sm text-blue-600 font-medium">If Applicable</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-3">Coverage for business equipment and liability</p>
+                            <div class="text-xs text-gray-500">
+                                <i class="fas fa-info-circle mr-1"></i>
+                                Standard policies have limited business coverage
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Money-Saving Tips -->
+                <div class="form-card p-6 md:p-8 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">
+                        <i class="fas fa-piggy-bank text-green-500 mr-3"></i>
+                        Ways to Save on Homeowners Insurance
+                    </h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-medium">Bundle with Auto</h4>
+                                    <p class="text-sm text-gray-600">Save 10-25% by combining policies</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-medium">Security Systems</h4>
+                                    <p class="text-sm text-gray-600">Burglar alarms can save 5-20%</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-medium">Smoke Detectors</h4>
+                                    <p class="text-sm text-gray-600">Monitored systems offer discounts</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-medium">Storm Shutters</h4>
+                                    <p class="text-sm text-gray-600">Hurricane protection saves money</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-medium">Higher Deductibles</h4>
+                                    <p class="text-sm text-gray-600">Increase deductible to lower premium</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-medium">New Home Discounts</h4>
+                                    <p class="text-sm text-gray-600">Newer construction often costs less</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-medium">Claims-Free Discount</h4>
+                                    <p class="text-sm text-gray-600">No claims history reduces rates</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-medium">Loyalty Discounts</h4>
+                                    <p class="text-sm text-gray-600">Long-term customers often save</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final Legal Disclaimer -->
+                <div class="legal-disclaimer mb-8">
+                    <div class="flex items-start">
+                        <i class="fas fa-gavel text-red-500 mr-3 mt-1 text-xl"></i>
+                        <div>
+                            <h3 class="font-bold text-red-800 mb-2">FINAL DISCLAIMER</h3>
+                            <p class="text-red-700 text-sm leading-relaxed mb-3">
+                                <strong>This tool provides rough estimates only and should not be relied upon for making insurance decisions.</strong> 
+                                Actual replacement costs can vary dramatically based on local construction costs, building codes, materials availability, 
+                                labor costs, and numerous other factors not considered in this simplified calculator.
+                            </p>
+                            <p class="text-red-700 text-sm leading-relaxed">
+                                Coverage recommendations are general suggestions only and may not be appropriate for your specific situation. 
+                                Always consult with a licensed insurance professional for personalized advice and accurate quotes. 
+                                Bill Layne Insurance Agency makes no warranties or guarantees regarding the accuracy of these estimates.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="form-card p-6 md:p-8 bg-green-600 text-white">
+                    <div class="text-center">
+                        <h2 class="text-2xl font-bold mb-4">Ready for Professional Guidance?</h2>
+                        <p class="text-green-100 mb-6">Let our experienced agents provide accurate quotes and personalized recommendations</p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="tel:3368351993" class="inline-flex items-center justify-center bg-white text-green-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition">
+                                <i class="fas fa-phone mr-2"></i> Call (336) 835-1993
+                            </a>
+                            <a href="https://billlayneinsurance.com/contact-us.html" class="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition">
+                                <i class="fas fa-envelope mr-2"></i> Get Professional Quote
+                            </a>
+                        </div>
+                        
+                        <div class="mt-6 text-sm text-green-100">
+                            <p><i class="fas fa-map-marker-alt mr-2"></i>1283 N Bridge St, Elkin NC 28621</p>
+                            <p><i class="fas fa-envelope mr-2"></i>Save@BillLayneInsurance.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-4">
+                <img src="https://i.imgur.com/cBAgeX8.png" alt="Bill Layne Insurance Agency" class="h-12 mx-auto mb-4">
+            </div>
+            <p class="text-gray-400 mb-2">© 2025 Bill Layne Insurance Agency. All rights reserved.</p>
+            <p class="text-gray-400">Serving North Carolina with trusted insurance solutions</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        let formData = {};
+
+        // Step navigation
+        function nextStep(step) {
+            // Validate current step
+            if (!validateStep(currentStep)) {
+                return;
+            }
+            
+            // Hide current step
+            document.getElementById(`step${currentStep}`).classList.add('hidden');
+            
+            // Show next step
+            document.getElementById(`step${step}`).classList.remove('hidden');
+            
+            // Update progress
+            updateProgress(step);
+            
+            currentStep = step;
+            
+            // Generate results if going to step 4
+            if (step === 4) {
+                generateEstimate();
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function validateStep(step) {
+            switch(step) {
+                case 1:
+                    const homeSize = document.getElementById('homeSize').value;
+                    const yearBuilt = document.getElementById('yearBuilt').value;
+                    const construction = document.querySelector('.coverage-option[data-construction].selected');
+                    const stories = document.getElementById('stories').value;
+                    const location = document.getElementById('locationType').value;
+                    
+                    if (!homeSize || !yearBuilt || !construction || !stories || !location) {
+                        alert('Please complete all fields before continuing.');
+                        return false;
+                    }
+                    
+                    formData.home = {
+                        size: parseInt(homeSize),
+                        yearBuilt: parseInt(yearBuilt),
+                        construction: construction.dataset.construction,
+                        stories: parseFloat(stories),
+                        location: location
+                    };
+                    return true;
+                    
+                case 2:
+                    const personalProperty = document.getElementById('personalProperty').value;
+                    const highValue = document.getElementById('highValue').value;
+                    const condition = document.querySelector('.coverage-option[data-condition].selected');
+                    
+                    if (!personalProperty || !highValue || !condition) {
+                        alert('Please complete all required fields before continuing.');
+                        return false;
+                    }
+                    
+                    // Collect features
+                    const features = {
+                        fireplace: document.getElementById('fireplace').checked,
+                        deck: document.getElementById('deck').checked,
+                        pool: document.getElementById('pool').checked,
+                        garage: document.getElementById('garage').checked,
+                        basement: document.getElementById('basement').checked,
+                        upgrades: document.getElementById('upgrades').checked
+                    };
+                    
+                    formData.property = {
+                        personalProperty: parseInt(personalProperty),
+                        highValue: highValue,
+                        condition: condition.dataset.condition,
+                        features: features
+                    };
+                    return true;
+                    
+                case 3:
+                    const risk = document.querySelector('.coverage-option[data-risk].selected');
+                    const deductible = document.getElementById('deductible').value;
+                    const fireStation = document.getElementById('fireStation').value;
+                    
+                    if (!risk || !deductible || !fireStation) {
+                        alert('Please complete all required fields before continuing.');
+                        return false;
+                    }
+                    
+                    // Collect concerns
+                    const concerns = {
+                        flood: document.getElementById('flood').checked,
+                        earthquake: document.getElementById('earthquake').checked,
+                        homeOffice: document.getElementById('homeOffice').checked,
+                        rentalIncome: document.getElementById('rentalIncome').checked
+                    };
+                    
+                    formData.preferences = {
+                        risk: risk.dataset.risk,
+                        deductible: parseInt(deductible),
+                        fireStation: fireStation,
+                        concerns: concerns
+                    };
+                    return true;
+            }
+            return true;
+        }
+
+        function updateProgress(step) {
+            const progress = (step / 4) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressPercent').textContent = Math.round(progress) + '%';
+            
+            const stepTexts = [
+                'Step 1 of 4: Home Information',
+                'Step 2 of 4: Property Details', 
+                'Step 3 of 4: Coverage Preferences',
+                'Step 4 of 4: Your Estimate'
+            ];
+            
+            document.getElementById('progressText').textContent = stepTexts[step - 1];
+        }
+
+        function generateEstimate() {
+            // Calculate replacement cost estimate
+            const replacementCost = calculateReplacementCost(formData);
+            
+            // Generate coverage recommendations
+            const coverage = generateCoverageRecommendations(formData, replacementCost);
+            
+            // Update HTML content
+            document.getElementById('replacementCostContent').innerHTML = generateReplacementCostHTML(replacementCost);
+            document.getElementById('recommendationContent').innerHTML = generateCoverageHTML(coverage);
+        }
+
+        function calculateReplacementCost(data) {
+            // Base cost per square foot (NC averages)
+            let baseCostPerSqFt = 150; // Conservative base estimate
+            
+            // Adjust for construction type
+            switch(data.home.construction) {
+                case 'brick':
+                    baseCostPerSqFt += 20;
+                    break;
+                case 'frame':
+                    baseCostPerSqFt += 0; // Base rate
+                    break;
+                case 'other':
+                    baseCostPerSqFt += 10;
+                    break;
+            }
+            
+            // Adjust for age (older homes cost more to rebuild due to materials/codes)
+            const age = 2025 - data.home.yearBuilt;
+            if (age > 50) {
+                baseCostPerSqFt += 30;
+            } else if (age > 25) {
+                baseCostPerSqFt += 15;
+            }
+            
+            // Adjust for stories
+            if (data.home.stories >= 2) {
+                baseCostPerSqFt += 10;
+            }
+            
+            // Adjust for location
+            switch(data.home.location) {
+                case 'urban':
+                    baseCostPerSqFt += 25;
+                    break;
+                case 'suburban':
+                    baseCostPerSqFt += 10;
+                    break;
+                case 'rural':
+                    baseCostPerSqFt -= 5;
+                    break;
+            }
+            
+            // Feature adjustments
+            let featureAdjustment = 0;
+            if (data.property.features.fireplace) featureAdjustment += data.home.size * 5;
+            if (data.property.features.deck) featureAdjustment += 15000;
+            if (data.property.features.pool) featureAdjustment += 50000;
+            if (data.property.features.garage) featureAdjustment += 25000;
+            if (data.property.features.basement) featureAdjustment += data.home.size * 25;
+            if (data.property.features.upgrades) featureAdjustment += data.home.size * 15;
+            
+            // Condition adjustment
+            let conditionMultiplier = 1.0;
+            switch(data.property.condition) {
+                case 'excellent':
+                    conditionMultiplier = 1.1;
+                    break;
+                case 'good':
+                    conditionMultiplier = 1.0;
+                    break;
+                case 'fair':
+                    conditionMultiplier = 0.9;
+                    break;
+            }
+            
+            const baseCost = data.home.size * baseCostPerSqFt * conditionMultiplier;
+            const totalCost = baseCost + featureAdjustment;
+            
+            return {
+                dwelling: Math.round(totalCost),
+                personalProperty: data.property.personalProperty,
+                lossOfUse: Math.round(totalCost * 0.2), // 20% of dwelling
+                liability: 300000, // Standard starting point
+                medicalPayments: 5000,
+                lowEstimate: Math.round(totalCost * 0.85),
+                highEstimate: Math.round(totalCost * 1.15)
+            };
+        }
+
+        function generateCoverageRecommendations(data, replacementCost) {
+            let rec = {
+                dwelling: replacementCost.dwelling,
+                personalProperty: data.property.personalProperty,
+                lossOfUse: replacementCost.lossOfUse,
+                liability: 300000,
+                medicalPayments: 5000,
+                deductible: data.preferences.deductible,
+                estimatedAnnualCost: { min: 800, max: 1200 }
+            };
+
+            // Adjust based on risk tolerance
+            switch(data.preferences.risk) {
+                case 'conservative':
+                    rec.dwelling = Math.round(rec.dwelling * 1.1); // 10% buffer
+                    rec.liability = 500000;
+                    rec.estimatedAnnualCost.min += 200;
+                    rec.estimatedAnnualCost.max += 300;
+                    break;
+                case 'aggressive':
+                    rec.liability = 100000;
+                    rec.estimatedAnnualCost.min -= 150;
+                    rec.estimatedAnnualCost.max -= 200;
+                    break;
+            }
+
+            // Adjust for location factors
+            if (data.home.location === 'rural' || data.preferences.fireStation === 'far') {
+                rec.estimatedAnnualCost.min += 100;
+                rec.estimatedAnnualCost.max += 150;
+            }
+
+            // Adjust for home value
+            if (rec.dwelling > 300000) {
+                rec.estimatedAnnualCost.min += 300;
+                rec.estimatedAnnualCost.max += 500;
+            } else if (rec.dwelling < 150000) {
+                rec.estimatedAnnualCost.min -= 100;
+                rec.estimatedAnnualCost.max -= 150;
+            }
+
+            return rec;
+        }
+
+        function generateReplacementCostHTML(cost) {
+            const formatCurrency = (amount) => `${amount.toLocaleString()}`;
+            
+            return `
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="text-center bg-green-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Estimated Replacement Cost</h3>
+                        <div class="text-3xl font-bold text-green-600">${formatCurrency(cost.dwelling)}</div>
+                        <p class="text-sm text-gray-600 mt-2">*Based on current NC construction costs</p>
+                    </div>
+                    
+                    <div class="text-center bg-blue-50 p-6 rounded-lg">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Range Estimate</h3>
+                        <div class="text-xl font-bold text-blue-600">${formatCurrency(cost.lowEstimate)} - ${formatCurrency(cost.highEstimate)}</div>
+                        <p class="text-sm text-gray-600 mt-2">*Accounts for market variations</p>
+                    </div>
+                </div>
+                
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-4">
+                    <div class="flex">
+                        <i class="fas fa-exclamation-triangle text-yellow-500 mr-3 mt-1"></i>
+                        <div>
+                            <h3 class="font-semibold text-yellow-800">Important Notes About This Estimate</h3>
+                            <ul class="text-yellow-700 text-sm mt-2 space-y-1">
+                                <li>• Based on average NC construction costs - actual costs vary widely</li>
+                                <li>• Does not include land value (insurance covers structure only)</li>
+                                <li>• Local building codes and permits may affect actual costs</li>
+                                <li>• Market conditions significantly impact construction pricing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function generateCoverageHTML(rec) {
+            const formatCurrency = (amount) => `${amount.toLocaleString()}`;
+            
+            return `
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="coverage-card">
+                        <h4 class="font-semibold text-gray-800 mb-3">Property Coverage</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex justify-between">
+                                <span>Dwelling (Structure)</span>
+                                <span class="font-medium">${formatCurrency(rec.dwelling)}</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Personal Property</span>
+                                <span class="font-medium">${formatCurrency(rec.personalProperty)}</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Loss of Use</span>
+                                <span class="font-medium">${formatCurrency(rec.lossOfUse)}</span>
+                            </li>
+                            <li class="flex justify-between border-t pt-2 mt-2">
+                                <span>Deductible</span>
+                                <span class="font-medium">${formatCurrency(rec.deductible)}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="coverage-card">
+                        <h4 class="font-semibold text-gray-800 mb-3">Liability Coverage</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex justify-between">
+                                <span>Personal Liability</span>
+                                <span class="font-medium">${formatCurrency(rec.liability)}</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Medical Payments</span>
+                                <span class="font-medium">${formatCurrency(rec.medicalPayments)}</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Additional Living Expenses</span>
+                                <span class="font-medium">Included</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="text-center bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Estimated Annual Premium</h3>
+                    <div class="text-3xl font-bold text-blue-600">${rec.estimatedAnnualCost.min} - ${rec.estimatedAnnualCost.max}</div>
+                    <p class="text-sm text-gray-600 mt-2">*Rough estimate only - actual rates vary significantly by many factors not considered here</p>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mt-4">
+                    <div class="flex">
+                        <i class="fas fa-lightbulb text-blue-500 mr-3 mt-1"></i>
+                        <div>
+                            <h3 class="font-semibold text-blue-800">Why These Amounts?</h3>
+                            <p class="text-blue-700 text-sm">These estimates are based on your inputs and general guidelines. Your actual needs may be different based on your specific situation, local conditions, and personal preferences.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Handle coverage option selections
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.coverage-option')) {
+                const option = e.target.closest('.coverage-option');
+                const group = option.parentElement;
+                
+                // Remove selected class from siblings
+                group.querySelectorAll('.coverage-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                option.classList.add('selected');
+                
+                // Enable next button if this was the last required field
+                updateNextButton();
+            }
+        });
+
+        // Handle form input changes
+        document.addEventListener('change', function(e) {
+            if (e.target.matches('input, select')) {
+                updateNextButton();
+            }
+        });
+
+        function updateNextButton() {
+            const step = currentStep;
+            let isValid = false;
+            
+            switch(step) {
+                case 1:
+                    const homeSize = document.getElementById('homeSize').value;
+                    const yearBuilt = document.getElementById('yearBuilt').value;
+                    const construction = document.querySelector('.coverage-option[data-construction].selected');
+                    const stories = document.getElementById('stories').value;
+                    const location = document.getElementById('locationType').value;
+                    isValid = homeSize && yearBuilt && construction && stories && location;
+                    break;
+                case 2:
+                    const personalProperty = document.getElementById('personalProperty').value;
+                    const highValue = document.getElementById('highValue').value;
+                    const condition = document.querySelector('.coverage-option[data-condition].selected');
+                    isValid = personalProperty && highValue && condition;
+                    break;
+                case 3:
+                    const risk = document.querySelector('.coverage-option[data-risk].selected');
+                    const deductible = document.getElementById('deductible').value;
+                    const fireStation = document.getElementById('fireStation').value;
+                    isValid = risk && deductible && fireStation;
+                    break;
+            }
+            
+            const nextButton = document.getElementById(`step${step}Next`);
+            if (nextButton) {
+                nextButton.disabled = !isValid;
+            }
+        }
+
+        // Initialize tooltips for mobile
+        document.querySelectorAll('.tooltip').forEach(tooltip => {
+            tooltip.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    alert(this.dataset.tooltip);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
