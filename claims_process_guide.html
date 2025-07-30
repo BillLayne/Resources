@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Claims Process Guide | Bill Layne Insurance Agency</title>
+    <meta name="description" content="Complete step-by-step guide to filing insurance claims and maximizing your settlement. Learn what to do immediately after an incident, documentation requirements, and timeline expectations.">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Header styles matching the main site */
+        #main-header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Custom content styling with orange theme */
+        .content-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .content-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            border-radius: 12px;
+            color: white;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .step-badge {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .urgent-badge {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .guide-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            border-left: 4px solid #f97316;
+            margin-bottom: 24px;
+        }
+
+        .checklist-item {
+            background: #fff7ed;
+            border: 2px solid #fed7aa;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .checklist-item:hover {
+            background: #ffedd5;
+            border-color: #fdba74;
+        }
+
+        .checklist-item.completed {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+
+        .emergency-box {
+            background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #f97316;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -22px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #f97316;
+        }
+
+        .timeline-item.completed::before {
+            background: #10b981;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .content-card {
+                margin: 0 16px;
+                border-radius: 12px;
+            }
+            
+            .guide-card {
+                padding: 20px;
+            }
+            
+            .section-header {
+                padding: 20px;
+            }
+
+            .timeline-container {
+                padding-left: 20px;
+            }
+
+            .timeline-item::before {
+                left: -17px;
+            }
+        }
+
+        /* Table of Contents */
+        .toc-item {
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .toc-item:hover {
+            background: #fff7ed;
+            color: #f97316;
+        }
+
+        .toc-item.active {
+            background: #f97316;
+            color: white;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Print styles */
+        @media print {
+            .no-print {
+                display: none;
+            }
+            
+            .checklist-item {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Interactive checkboxes for mobile */
+        .interactive-checkbox {
+            transform: scale(1.2);
+            margin-right: 12px;
+        }
+
+        /* Document download styling */
+        .download-card {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            border: 2px solid #f97316;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .download-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header matching main site -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 no-print">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="https://billlayneinsurance.com/" class="text-gray-800 text-2xl font-bold">
+                    Bill Layne Insurance
+                </a>
+                
+                <!-- Back to Resources -->
+                <div class="flex items-center space-x-4">
+                    <a href="./" class="text-orange-600 hover:text-orange-700 flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        <span class="hidden sm:inline">Back to Resources</span>
+                    </a>
+                    <a href="tel:3368351993" class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                        <i class="fas fa-phone mr-2"></i>
+                        <span class="hidden sm:inline">(336) 835-1993</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-8 bg-orange-600 text-white no-print">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-4xl mx-auto">
+                <i class="fas fa-clipboard-list text-5xl mb-4"></i>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+                    Insurance Claims Process Guide
+                </h1>
+                <p class="text-lg md:text-xl opacity-90 mb-4">
+                    Step-by-step guide to filing insurance claims and maximizing your settlement
+                </p>
+                <div class="urgent-badge">
+                    BOOKMARK THIS PAGE FOR EMERGENCIES
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Emergency Reference -->
+    <div class="container mx-auto px-4 py-4 no-print">
+        <div class="emergency-box">
+            <div class="flex items-start">
+                <i class="fas fa-exclamation-triangle text-red-600 mr-3 mt-1 text-xl"></i>
+                <div>
+                    <h3 class="font-bold text-red-800 mb-2">EMERGENCY QUICK REFERENCE</h3>
+                    <div class="grid md:grid-cols-3 gap-4 text-sm">
+                        <div>
+                            <p class="font-semibold text-red-700">Police (if needed)</p>
+                            <p class="text-red-600">911</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-red-700">Bill Layne Insurance</p>
+                            <p class="text-red-600">(336) 835-1993</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-red-700">First Priority</p>
+                            <p class="text-red-600">Safety First, Photos Second</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table of Contents and Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid lg:grid-cols-4 gap-8">
+            <!-- Sidebar TOC (Desktop) -->
+            <div class="lg:col-span-1 no-print">
+                <div class="content-card p-6 sticky top-28">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Quick Navigation</h3>
+                    <nav class="space-y-2">
+                        <a href="#immediate-steps" class="toc-item block">Immediate Steps</a>
+                        <a href="#documentation" class="toc-item block">Documentation</a>
+                        <a href="#filing-claim" class="toc-item block">Filing Your Claim</a>
+                        <a href="#adjuster-process" class="toc-item block">Adjuster Process</a>
+                        <a href="#maximizing-settlement" class="toc-item block">Maximizing Settlement</a>
+                        <a href="#timelines" class="toc-item block">Timeline Expectations</a>
+                        <a href="#common-mistakes" class="toc-item block">Common Mistakes</a>
+                        <a href="#claim-types" class="toc-item block">Claim Types</a>
+                        <a href="#when-denied" class="toc-item block">If Claim Denied</a>
+                        <a href="#professional-help" class="toc-item block">Getting Help</a>
+                    </nav>
+                    
+                    <div class="mt-6 pt-6 border-t border-gray-200">
+                        <button onclick="window.print()" class="w-full bg-orange-600 text-white py-2 px-4 rounded-lg hover:bg-orange-700 transition mb-3">
+                            <i class="fas fa-print mr-2"></i>
+                            Print Guide
+                        </button>
+                        <div class="download-card">
+                            <i class="fas fa-download text-orange-600 text-2xl mb-2"></i>
+                            <h4 class="font-semibold text-orange-800 mb-1">Emergency Checklist</h4>
+                            <p class="text-xs text-orange-700 mb-3">Download for your glove compartment</p>
+                            <button onclick="downloadChecklist()" class="text-orange-600 hover:text-orange-700 font-medium text-sm">
+                                Download PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="lg:col-span-3">
+                <!-- Immediate Steps Section -->
+                <section id="immediate-steps" class="mb-12">
+                    <div class="section-header">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h2 class="text-3xl font-bold mb-2">Immediate Steps After an Incident</h2>
+                                <p class="text-orange-100">First 30 minutes are critical</p>
+                            </div>
+                            <i class="fas fa-stopwatch text-4xl text-orange-300"></i>
+                        </div>
+                    </div>
+
+                    <div class="emergency-box">
+                        <div class="flex items-start">
+                            <i class="fas fa-heart text-red-600 mr-4 mt-1 text-xl"></i>
+                            <div>
+                                <h3 class="font-bold text-red-800 mb-2">PRIORITY #1: SAFETY FIRST</h3>
+                                <p class="text-red-700 text-sm">
+                                    Before anything else, ensure everyone is safe. Move to safety if possible, call 911 if there are injuries, 
+                                    and secure the scene. Claims can wait - lives cannot.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Step-by-Step Immediate Actions</h3>
+                        
+                        <div class="timeline-container">
+                            <div class="timeline-item">
+                                <div class="checklist-item">
+                                    <div class="flex items-start">
+                                        <input type="checkbox" class="interactive-checkbox" id="safety-check">
+                                        <div>
+                                            <label for="safety-check" class="font-semibold text-gray-800 cursor-pointer">Ensure Safety & Call 911 if Needed</label>
+                                            <p class="text-sm text-gray-600 mt-1">Check for injuries, move to safety, call emergency services if required</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="checklist-item">
+                                    <div class="flex items-start">
+                                        <input type="checkbox" class="interactive-checkbox" id="scene-secure">
+                                        <div>
+                                            <label for="scene-secure" class="font-semibold text-gray-800 cursor-pointer">Secure the Scene</label>
+                                            <p class="text-sm text-gray-600 mt-1">Turn on hazard lights, set up flares if safe to do so, avoid further damage</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="checklist-item">
+                                    <div class="flex items-start">
+                                        <input type="checkbox" class="interactive-checkbox" id="call-police">
+                                        <div>
+                                            <label for="call-police" class="font-semibold text-gray-800 cursor-pointer">Call Police (When Required)</label>
+                                            <p class="text-sm text-gray-600 mt-1">
+                                                <strong>Required in NC if:</strong> Injuries, death, total damage >$4,000, hit & run, impaired driver suspected
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="checklist-item">
+                                    <div class="flex items-start">
+                                        <input type="checkbox" class="interactive-checkbox" id="call-agent">
+                                        <div>
+                                            <label for="call-agent" class="font-semibold text-gray-800 cursor-pointer">Call Your Insurance Agent</label>
+                                            <p class="text-sm text-gray-600 mt-1">
+                                                <strong>Bill Layne Insurance:</strong> (336) 835-1993 - We're here to guide you through the process
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="checklist-item">
+                                    <div class="flex items-start">
+                                        <input type="checkbox" class="interactive-checkbox" id="exchange-info">
+                                        <div>
+                                            <label for="exchange-info" class="font-semibold text-gray-800 cursor-pointer">Exchange Information</label>
+                                            <p class="text-sm text-gray-600 mt-1">
+                                                Get: Name, phone, insurance company, policy number, driver's license, license plate, vehicle info
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="checklist-item">
+                                    <div class="flex items-start">
+                                        <input type="checkbox" class="interactive-checkbox" id="document-scene">
+                                        <div>
+                                            <label for="document-scene" class="font-semibold text-gray-800 cursor-pointer">Document Everything</label>
+                                            <p class="text-sm text-gray-600 mt-1">Photos, videos, witness information - your phone is your best tool</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="warning-box">
+                            <div class="flex items-start">
+                                <i class="fas fa-exclamation-triangle text-yellow-600 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-yellow-800 mb-2">What NOT to Say</h4>
+                                    <ul class="text-yellow-700 text-sm space-y-1">
+                                        <li>• Don't admit fault ("I'm sorry" can be used against you)</li>
+                                        <li>• Don't discuss details with the other party beyond basic info exchange</li>
+                                        <li>• Don't sign anything other than a police report or traffic ticket</li>
+                                        <li>• Don't agree to handle it "without insurance"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Documentation Section -->
+                <section id="documentation" class="mb-12">
+                    <div class="section-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-camera text-4xl mr-4"></i>
+                            <div>
+                                <h2 class="text-3xl font-bold mb-2">Documentation Checklist</h2>
+                                <p class="text-orange-100">The more you document, the stronger your claim</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Photo Documentation</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-3">Auto Accident Photos</h4>
+                                <div class="space-y-2">
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="photo-damage">
+                                            <label for="photo-damage" class="text-sm cursor-pointer">All vehicle damage from multiple angles</label>
+                                        </div>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="photo-scene">
+                                            <label for="photo-scene" class="text-sm cursor-pointer">Accident scene & vehicle positions</label>
+                                        </div>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="photo-road">
+                                            <label for="photo-road" class="text-sm cursor-pointer">Road conditions, signs, signals</label>
+                                        </div>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="photo-license">
+                                            <label for="photo-license" class="text-sm cursor-pointer">License plates & driver's licenses</label>
+                                        </div>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="photo-interior">
+                                            <label for="photo-interior" class="text-sm cursor-pointer">Vehicle interior damage</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-3">Property Damage Photos</h4>
+                                <div class="space-y-2">
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="photo-overview">
+                                            <label for="photo-overview" class="text-sm cursor-pointer">Overall damage overview shots</label>
+                                        </div>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="photo-close">
+                                            <label for="photo-close" class="text-sm cursor-pointer">Close-up detail shots of damage</label>
+                                        </div>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="photo-undamaged">
+                                            <label for="photo-undamaged" class="text-sm cursor-pointer">Undamaged areas for comparison</label>
+                                        </div>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="photo-contents">
+                                            <label for="photo-contents" class="text-sm cursor-pointer">Damaged personal property</label>
+                                        </div>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="photo-serial">
+                                            <label for="photo-serial" class="text-sm cursor-pointer">Serial numbers & model info</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="success-box mt-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-lightbulb text-green-600 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-green-800 mb-2">Pro Photography Tips</h4>
+                                    <ul class="text-green-700 text-sm space-y-1">
+                                        <li>• Take more photos than you think you need</li>
+                                        <li>• Include something for scale (coin, pen, hand)</li>
+                                        <li>• Shoot in good lighting when possible</li>
+                                        <li>• Take both wide shots and close-ups</li>
+                                        <li>• Don't delete photos - storage is cheap, claims are expensive</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Information to Collect</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-3">From Other Party</h4>
+                                <div class="space-y-2">
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="info-name">
+                                            <label for="info-name" class="text-sm cursor-pointer">Full name & contact info</label>
+                                        </div>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="info-insurance">
+                                            <label for="info-insurance" class="text-sm cursor-pointer">Insurance company & policy number</label>
+                                        </div>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="info-dl">
+                                            <label for="info-dl" class="text-sm cursor-pointer">Driver's license number</label>
+                                        </div>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="info-vehicle">
+                                            <label for="info-vehicle" class="text-sm cursor-pointer">Vehicle make, model, year, VIN</label>
+                                        </div>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="info-plate">
+                                            <label for="info-plate" class="text-sm cursor-pointer">License plate number</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-3">Witness Information</h4>
+                                <div class="space-y-2">
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="witness-name">
+                                            <label for="witness-name" class="text-sm cursor-pointer">Witness names & phone numbers</label>
+                                        </div>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="witness-statement">
+                                            <label for="witness-statement" class="text-sm cursor-pointer">Brief statement of what they saw</label>
+                                        </div>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="witness-relationship">
+                                            <label for="witness-relationship" class="text-sm cursor-pointer">Relationship to parties (if any)</label>
+                                        </div>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="officer-info">
+                                            <label for="officer-info" class="text-sm cursor-pointer">Officer name & report number</label>
+                                        </div>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" class="interactive-checkbox" id="tow-info">
+                                            <label for="tow-info" class="text-sm cursor-pointer">Tow truck info & destination</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Written Documentation</h3>
+                        
+                        <div class="info-box">
+                            <div class="flex items-start">
+                                <i class="fas fa-pen text-blue-600 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-blue-800 mb-2">Keep a Claim Journal</h4>
+                                    <p class="text-blue-700 text-sm mb-3">
+                                        Document every conversation, email, and interaction related to your claim. Include dates, times, names, and summaries.
+                                    </p>
+                                    <ul class="text-blue-700 text-sm space-y-1">
+                                        <li>• Date and time of all phone calls</li>
+                                        <li>• Names and titles of people you speak with</li>
+                                        <li>• Summary of what was discussed</li>
+                                        <li>• Any promises or commitments made</li>
+                                        <li>• Follow up in writing when possible</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4 mt-6">
+                            <div class="checklist-item">
+                                <h5 class="font-medium text-gray-800 mb-2">Medical Documentation</h5>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Medical records & bills</li>
+                                    <li>• Doctor's notes & treatment plans</li>
+                                    <li>• Prescription receipts</li>
+                                    <li>• Physical therapy records</li>
+                                </ul>
+                            </div>
+                            <div class="checklist-item">
+                                <h5 class="font-medium text-gray-800 mb-2">Financial Documentation</h5>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Repair estimates & invoices</li>
+                                    <li>• Rental car receipts</li>
+                                    <li>• Lost wage documentation</li>
+                                    <li>• Replacement cost receipts</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Filing Your Claim Section -->
+                <section id="filing-claim" class="mb-12">
+                    <div class="section-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-file-upload text-4xl mr-4"></i>
+                            <div>
+                                <h2 class="text-3xl font-bold mb-2">Filing Your Claim</h2>
+                                <p class="text-orange-100">How to start the claims process correctly</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">When and How to File</h3>
+                        
+                        <div class="warning-box">
+                            <div class="flex items-start">
+                                <i class="fas fa-clock text-yellow-600 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-yellow-800 mb-2">Time Limits Matter</h4>
+                                    <p class="text-yellow-700 text-sm mb-2">
+                                        File your claim as soon as possible. Most policies require "prompt notification" and some have specific deadlines.
+                                    </p>
+                                    <ul class="text-yellow-700 text-sm space-y-1">
+                                        <li>• <strong>Immediately:</strong> For major accidents or significant damage</li>
+                                        <li>• <strong>Within 24 hours:</strong> For most incidents</li>
+                                        <li>• <strong>Check your policy:</strong> For specific notification requirements</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="font-semibold text-gray-800 mb-3 mt-6">Filing Methods</h4>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="checklist-item bg-green-50 border-green-200">
+                                <div class="text-center">
+                                    <i class="fas fa-phone text-green-600 text-2xl mb-2"></i>
+                                    <h5 class="font-medium text-green-800 mb-2">Call Your Agent</h5>
+                                    <p class="text-sm text-green-700 mb-2">
+                                        <strong>Best Option:</strong> Personal guidance through the process
+                                    </p>
+                                    <p class="text-xs text-green-600">(336) 835-1993</p>
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <div class="text-center">
+                                    <i class="fas fa-globe text-blue-600 text-2xl mb-2"></i>
+                                    <h5 class="font-medium text-gray-800 mb-2">Online Portal</h5>
+                                    <p class="text-sm text-gray-600 mb-2">Most insurers have online claim filing</p>
+                                    <p class="text-xs text-gray-500">Available 24/7</p>
+                                </div>
+                            </div>
+                            <div class="checklist-item">
+                                <div class="text-center">
+                                    <i class="fas fa-mobile-alt text-purple-600 text-2xl mb-2"></i>
+                                    <h5 class="font-medium text-gray-800 mb-2">Mobile App</h5>
+                                    <p class="text-sm text-gray-600 mb-2">Upload photos directly from the scene</p>
+                                    <p class="text-xs text-gray-500">Quick & convenient</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Information You'll Need to Provide</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-3">Basic Claim Information</h4>
+                                <div class="space-y-2">
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Policy Number:</strong> Your insurance policy number</p>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Date & Time:</strong> When the incident occurred</p>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Location:</strong> Exact location of the incident</p>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Description:</strong> What happened (stick to facts)</p>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Police Report:</strong> Report number if applicable</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-3">Parties Involved</h4>
+                                <div class="space-y-2">
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Your Information:</strong> Contact details, driver's license</p>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Other Party:</strong> All information collected at scene</p>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Witnesses:</strong> Names and contact information</p>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Injuries:</strong> Any injuries to any party</p>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Property Damage:</strong> Initial damage assessment</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="success-box mt-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-shield-alt text-green-600 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-green-800 mb-2">Why Use Bill Layne Insurance?</h4>
+                                    <p class="text-green-700 text-sm mb-2">
+                                        As your agent, we advocate for you throughout the claims process. We know how to navigate the system 
+                                        and ensure you get fair treatment.
+                                    </p>
+                                    <ul class="text-green-700 text-sm space-y-1">
+                                        <li>• We know your coverage details</li>
+                                        <li>• We speak the insurance company's language</li>
+                                        <li>• We can spot issues early and address them</li>
+                                        <li>• We're your advocate, not the insurance company's</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Adjuster Process Section -->
+                <section id="adjuster-process" class="mb-12">
+                    <div class="section-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-user-tie text-4xl mr-4"></i>
+                            <div>
+                                <h2 class="text-3xl font-bold mb-2">Working with Adjusters</h2>
+                                <p class="text-orange-100">What to expect and how to prepare</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Understanding the Process</h3>
+                        
+                        <div class="info-box">
+                            <div class="flex items-start">
+                                <i class="fas fa-info-circle text-blue-600 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-blue-800 mb-2">What is an Adjuster?</h4>
+                                    <p class="text-blue-700 text-sm">
+                                        An adjuster is the insurance company's representative who investigates your claim, assesses damage, 
+                                        and determines settlement amounts. They work for the insurance company, not for you.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="font-semibold text-gray-800 mb-3 mt-6">First Contact</h4>
+                        <div class="timeline-container">
+                            <div class="timeline-item">
+                                <div class="checklist-item">
+                                    <p class="text-sm"><strong>Within 24-48 hours:</strong> Adjuster should contact you to introduce themselves</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="checklist-item">
+                                    <p class="text-sm"><strong>Initial Interview:</strong> They'll ask for your account of what happened</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="checklist-item">
+                                    <p class="text-sm"><strong>Documentation Request:</strong> They'll ask for photos, reports, and other evidence</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="checklist-item">
+                                    <p class="text-sm"><strong>Inspection Scheduling:</strong> They'll want to inspect the damage</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Do's and Don'ts with Adjusters</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-green-800 mb-3 flex items-center">
+                                    <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                                    DO These Things
+                                </h4>
+                                <div class="space-y-2">
+                                    <div class="checklist-item bg-green-50 border-green-200">
+                                        <p class="text-sm">Be honest and factual in all communications</p>
+                                    </div>
+                                    <div class="checklist-item bg-green-50 border-green-200">
+                                        <p class="text-sm">Keep detailed records of all conversations</p>
+                                    </div>
+                                    <div class="checklist-item bg-green-50 border-green-200">
+                                        <p class="text-sm">Provide requested documentation promptly</p>
+                                    </div>
+                                    <div class="checklist-item bg-green-50 border-green-200">
+                                        <p class="text-sm">Ask questions if you don't understand something</p>
+                                    </div>
+                                    <div class="checklist-item bg-green-50 border-green-200">
+                                        <p class="text-sm">Follow up in writing after phone conversations</p>
+                                    </div>
+                                    <div class="checklist-item bg-green-50 border-green-200">
+                                        <p class="text-sm">Be present during property inspections</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-red-800 mb-3 flex items-center">
+                                    <i class="fas fa-times-circle text-red-600 mr-2"></i>
+                                    DON'T Do These Things
+                                </h4>
+                                <div class="space-y-2">
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <p class="text-sm">Don't admit fault or speculate about causes</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <p class="text-sm">Don't accept the first settlement offer</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <p class="text-sm">Don't sign releases without reviewing them</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <p class="text-sm">Don't feel pressured to give recorded statements</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <p class="text-sm">Don't let them rush you into decisions</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <p class="text-sm">Don't dispose of damaged property too quickly</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="warning-box mt-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-exclamation-triangle text-yellow-600 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-yellow-800 mb-2">Remember: Adjusters Work for the Insurance Company</h4>
+                                    <p class="text-yellow-700 text-sm">
+                                        While many adjusters are professional and fair, their job is to save money for their employer. 
+                                        Be cooperative but cautious. When in doubt, contact your agent at Bill Layne Insurance for guidance.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Maximizing Settlement Section -->
+                <section id="maximizing-settlement" class="mb-12">
+                    <div class="section-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-chart-line text-4xl mr-4"></i>
+                            <div>
+                                <h2 class="text-3xl font-bold mb-2">Maximizing Your Settlement</h2>
+                                <p class="text-orange-100">Get every dollar you're entitled to</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Key Strategies</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-3">Documentation is Everything</h4>
+                                <div class="space-y-2">
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Keep Everything:</strong> Every receipt, email, and document</p>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Get Multiple Estimates:</strong> For repairs and replacements</p>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Document Hidden Damage:</strong> Things not immediately visible</p>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Track All Expenses:</strong> Even small out-of-pocket costs</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-3">Know Your Coverage</h4>
+                                <div class="space-y-2">
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Read Your Policy:</strong> Understand what's covered</p>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Know Your Limits:</strong> Maximum payout amounts</p>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Understand Deductibles:</strong> What you pay out-of-pocket</p>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <p class="text-sm"><strong>Check for Additional Coverage:</strong> Endorsements and riders</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Negotiation Tips</h3>
+                        
+                        <div class="success-box">
+                            <div class="flex items-start">
+                                <i class="fas fa-handshake text-green-600 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-green-800 mb-2">Effective Negotiation Strategies</h4>
+                                    <ul class="text-green-700 text-sm space-y-1">
+                                        <li>• <strong>Don't accept the first offer:</strong> It's usually low</li>
+                                        <li>• <strong>Present evidence:</strong> Support your position with documentation</li>
+                                        <li>• <strong>Be persistent but professional:</strong> Stay calm and factual</li>
+                                        <li>• <strong>Get everything in writing:</strong> Verbal agreements aren't binding</li>
+                                        <li>• <strong>Consider all damages:</strong> Don't forget diminished value or loss of use</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="font-semibold text-gray-800 mb-3 mt-6">Common Settlement Components</h4>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="checklist-item">
+                                <h5 class="font-medium text-gray-800 mb-2">Property Damage</h5>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Repair costs or actual cash value</li>
+                                    <li>• Sales tax on replacement items</li>
+                                    <li>• Diminished value (for vehicles)</li>
+                                    <li>• Storage fees</li>
+                                </ul>
+                            </div>
+                            <div class="checklist-item">
+                                <h5 class="font-medium text-gray-800 mb-2">Additional Expenses</h5>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Rental car or temporary housing</li>
+                                    <li>• Lost wages or income</li>
+                                    <li>• Medical expenses</li>
+                                    <li>• Out-of-pocket costs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">When You Need Professional Help</h3>
+                        
+                        <div class="warning-box">
+                            <div class="flex items-start">
+                                <i class="fas fa-user-tie text-yellow-600 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-yellow-800 mb-2">Consider Professional Assistance When:</h4>
+                                    <ul class="text-yellow-700 text-sm space-y-1">
+                                        <li>• Claim is over $10,000</li>
+                                        <li>• There are injuries involved</li>
+                                        <li>• Fault is disputed</li>
+                                        <li>• Insurance company is unresponsive</li>
+                                        <li>• You feel overwhelmed by the process</li>
+                                        <li>• Settlement offer seems unfair</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4 mt-6">
+                            <div class="checklist-item bg-blue-50 border-blue-200">
+                                <h5 class="font-medium text-blue-800 mb-2">Your Insurance Agent</h5>
+                                <p class="text-sm text-blue-700 mb-2">Your first line of defense and advocacy</p>
+                                <p class="text-xs text-blue-600">Bill Layne Insurance: (336) 835-1993</p>
+                            </div>
+                            <div class="checklist-item">
+                                <h5 class="font-medium text-gray-800 mb-2">Public Adjuster</h5>
+                                <p class="text-sm text-gray-600 mb-2">Works for you, not the insurance company</p>
+                                <p class="text-xs text-gray-500">Usually charges 10-15% of settlement</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Timeline Expectations Section -->
+                <section id="timelines" class="mb-12">
+                    <div class="section-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-calendar-alt text-4xl mr-4"></i>
+                            <div>
+                                <h2 class="text-3xl font-bold mb-2">Timeline Expectations</h2>
+                                <p class="text-orange-100">What to expect and when</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Typical Claim Timelines</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-3">Simple Claims</h4>
+                                <div class="timeline-container">
+                                    <div class="timeline-item">
+                                        <div class="checklist-item bg-green-50 border-green-200">
+                                            <p class="text-sm"><strong>Day 1:</strong> File claim</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="checklist-item bg-green-50 border-green-200">
+                                            <p class="text-sm"><strong>Days 1-2:</strong> Adjuster contact</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="checklist-item bg-green-50 border-green-200">
+                                            <p class="text-sm"><strong>Days 3-7:</strong> Inspection & estimate</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="checklist-item bg-green-50 border-green-200">
+                                            <p class="text-sm"><strong>Days 7-14:</strong> Settlement offer</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="checklist-item bg-green-50 border-green-200">
+                                            <p class="text-sm"><strong>Days 14-21:</strong> Payment issued</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-3">Complex Claims</h4>
+                                <div class="timeline-container">
+                                    <div class="timeline-item">
+                                        <div class="checklist-item bg-orange-50 border-orange-200">
+                                            <p class="text-sm"><strong>Week 1:</strong> Initial investigation</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="checklist-item bg-orange-50 border-orange-200">
+                                            <p class="text-sm"><strong>Weeks 2-4:</strong> Detailed investigation</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="checklist-item bg-orange-50 border-orange-200">
+                                            <p class="text-sm"><strong>Weeks 4-8:</strong> Expert evaluations</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="checklist-item bg-orange-50 border-orange-200">
+                                            <p class="text-sm"><strong>Weeks 8-12:</strong> Negotiations</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="checklist-item bg-orange-50 border-orange-200">
+                                            <p class="text-sm"><strong>3+ months:</strong> Settlement/resolution</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-box mt-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-info-circle text-blue-600 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-blue-800 mb-2">Factors Affecting Timeline</h4>
+                                    <ul class="text-blue-700 text-sm space-y-1">
+                                        <li>• <strong>Claim complexity:</strong> Simple fender-bender vs. total loss</li>
+                                        <li>• <strong>Fault determination:</strong> Clear vs. disputed liability</li>
+                                        <li>• <strong>Injury severity:</strong> Property damage vs. bodily injury</li>
+                                        <li>• <strong>Documentation completeness:</strong> How well you've documented everything</li>
+                                        <li>• <strong>Cooperation level:</strong> How quickly parties respond</li>
+                                        <li>• <strong>Legal issues:</strong> Whether attorneys get involved</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">What Can Delay Your Claim</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-red-800 mb-3">Common Delays</h4>
+                                <div class="space-y-2">
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <p class="text-sm">Incomplete documentation</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <p class="text-sm">Disputed fault or liability</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <p class="text-sm">Hard-to-reach witnesses</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <p class="text-sm">Multiple parties involved</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <p class="text-sm">Ongoing medical treatment</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <p class="text-sm">Special investigations required</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-green-800 mb-3">How to Avoid Delays</h4>
+                                <div class="space-y-2">
+                                    <div class="checklist-item bg-green-50 border-green-200">
+                                        <p class="text-sm">Provide complete documentation upfront</p>
+                                    </div>
+                                    <div class="checklist-item bg-green-50 border-green-200">
+                                        <p class="text-sm">Respond promptly to requests</p>
+                                    </div>
+                                    <div class="checklist-item bg-green-50 border-green-200">
+                                        <p class="text-sm">Keep organized records</p>
+                                    </div>
+                                    <div class="checklist-item bg-green-50 border-green-200">
+                                        <p class="text-sm">Maintain regular communication</p>
+                                    </div>
+                                    <div class="checklist-item bg-green-50 border-green-200">
+                                        <p class="text-sm">Use your agent as an advocate</p>
+                                    </div>
+                                    <div class="checklist-item bg-green-50 border-green-200">
+                                        <p class="text-sm">Be cooperative but persistent</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Common Mistakes Section -->
+                <section id="common-mistakes" class="mb-12">
+                    <div class="section-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-exclamation-triangle text-4xl mr-4"></i>
+                            <div>
+                                <h2 class="text-3xl font-bold mb-2">Common Mistakes to Avoid</h2>
+                                <p class="text-orange-100">Learn from others' expensive errors</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Top 10 Costly Mistakes</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <div class="space-y-4">
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <h5 class="font-medium text-red-800 mb-1">1. Not Filing Promptly</h5>
+                                        <p class="text-sm text-red-700">Waiting too long can void your claim</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <h5 class="font-medium text-red-800 mb-1">2. Admitting Fault</h5>
+                                        <p class="text-sm text-red-700">Let investigators determine fault</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <h5 class="font-medium text-red-800 mb-1">3. Poor Documentation</h5>
+                                        <p class="text-sm text-red-700">Not taking enough photos or keeping records</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <h5 class="font-medium text-red-800 mb-1">4. Accepting First Offer</h5>
+                                        <p class="text-sm text-red-700">Initial offers are often low</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <h5 class="font-medium text-red-800 mb-1">5. Not Reading Paperwork</h5>
+                                        <p class="text-sm text-red-700">Understand what you're signing</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="space-y-4">
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <h5 class="font-medium text-red-800 mb-1">6. Disposing of Evidence</h5>
+                                        <p class="text-sm text-red-700">Don't throw away damaged items too quickly</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <h5 class="font-medium text-red-800 mb-1">7. Not Getting Medical Attention</h5>
+                                        <p class="text-sm text-red-700">See a doctor even for minor injuries</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <h5 class="font-medium text-red-800 mb-1">8. Talking Too Much</h5>
+                                        <p class="text-sm text-red-700">Stick to facts, avoid speculation</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <h5 class="font-medium text-red-800 mb-1">9. Not Using Your Agent</h5>
+                                        <p class="text-sm text-red-700">Your agent is your advocate</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <h5 class="font-medium text-red-800 mb-1">10. Being Too Trusting</h5>
+                                        <p class="text-sm text-red-700">Verify everything and get it in writing</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Red Flags to Watch For</h3>
+                        
+                        <div class="warning-box">
+                            <div class="flex items-start">
+                                <i class="fas fa-flag text-yellow-600 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-yellow-800 mb-2">Warning Signs of Problems</h4>
+                                    <ul class="text-yellow-700 text-sm space-y-1">
+                                        <li>• Adjuster pressuring you to settle quickly</li>
+                                        <li>• Requests for recorded statements without explanation</li>
+                                        <li>• Denial letters without clear reasoning</li>
+                                        <li>• Unreasonably low settlement offers</li>
+                                        <li>• Adjuster won't return calls or emails</li>
+                                        <li>• Claims that certain damages aren't covered</li>
+                                        <li>• Requests to sign broad medical releases</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Claim Types Section -->
+                <section id="claim-types" class="mb-12">
+                    <div class="section-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-list-alt text-4xl mr-4"></i>
+                            <div>
+                                <h2 class="text-3xl font-bold mb-2">Different Types of Claims</h2>
+                                <p class="text-orange-100">Special considerations for each claim type</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Auto Insurance Claims</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-3">Collision Claims</h4>
+                                <div class="checklist-item">
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Police report usually required</li>
+                                        <li>• Multiple vehicle inspections</li>
+                                        <li>• Fault determination crucial</li>
+                                        <li>• Consider diminished value</li>
+                                        <li>• Rental car coverage important</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-3">Comprehensive Claims</h4>
+                                <div class="checklist-item">
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Weather reports for storm damage</li>
+                                        <li>• Police report for theft/vandalism</li>
+                                        <li>• Photos of all damage</li>
+                                        <li>• Inventory of stolen items</li>
+                                        <li>• Generally no fault issues</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Homeowners Claims</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-3">Property Damage</h4>
+                                <div class="checklist-item">
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Document all structural damage</li>
+                                        <li>• Get multiple contractor estimates</li>
+                                        <li>• Consider code upgrade costs</li>
+                                        <li>• Don't forget landscaping damage</li>
+                                        <li>• Save damaged items as evidence</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-3">Personal Property</h4>
+                                <div class="checklist-item">
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Create detailed inventory lists</li>
+                                        <li>• Provide receipts when possible</li>
+                                        <li>• Research replacement costs</li>
+                                        <li>• Consider depreciation vs. replacement</li>
+                                        <li>• Don't forget items in storage</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Special Considerations by Claim Type</h3>
+                        
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="checklist-item">
+                                <h5 class="font-medium text-gray-800 mb-2">Water Damage</h5>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Stop water source immediately</li>
+                                    <li>• Document before cleanup</li>
+                                    <li>• Prevent mold growth</li>
+                                    <li>• Keep receipts for mitigation</li>
+                                </ul>
+                            </div>
+                            <div class="checklist-item">
+                                <h5 class="font-medium text-gray-800 mb-2">Fire Damage</h5>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Get fire department report</li>
+                                    <li>• Document smoke damage</li>
+                                    <li>• Consider additional living expenses</li>
+                                    <li>• Professional cleaning may be covered</li>
+                                </ul>
+                            </div>
+                            <div class="checklist-item">
+                                <h5 class="font-medium text-gray-800 mb-2">Theft Claims</h5>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• File police report immediately</li>
+                                    <li>• Provide serial numbers</li>
+                                    <li>• Check credit card fraud</li>
+                                    <li>• Change locks and codes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- When Claims Are Denied Section -->
+                <section id="when-denied" class="mb-12">
+                    <div class="section-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-ban text-4xl mr-4"></i>
+                            <div>
+                                <h2 class="text-3xl font-bold mb-2">When Your Claim is Denied</h2>
+                                <p class="text-orange-100">Your options and next steps</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Understanding Claim Denials</h3>
+                        
+                        <div class="info-box">
+                            <div class="flex items-start">
+                                <i class="fas fa-info-circle text-blue-600 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-blue-800 mb-2">Why Claims Get Denied</h4>
+                                    <p class="text-blue-700 text-sm mb-2">
+                                        Not all claim denials are valid. Insurance companies sometimes deny legitimate claims to save money. 
+                                        Understanding the reasons can help you respond appropriately.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="font-semibold text-gray-800 mb-3 mt-6">Common Denial Reasons</h4>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h5 class="font-medium text-red-800 mb-2">Legitimate Reasons</h5>
+                                <div class="space-y-2">
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <p class="text-sm">Damage not covered by policy</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <p class="text-sm">Policy lapsed due to non-payment</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <p class="text-sm">Intentional damage or fraud</p>
+                                    </div>
+                                    <div class="checklist-item bg-red-50 border-red-200">
+                                        <p class="text-sm">Occurred before policy effective date</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h5 class="font-medium text-yellow-800 mb-2">Questionable Reasons</h5>
+                                <div class="space-y-2">
+                                    <div class="checklist-item bg-yellow-50 border-yellow-200">
+                                        <p class="text-sm">Policy interpretation disputes</p>
+                                    </div>
+                                    <div class="checklist-item bg-yellow-50 border-yellow-200">
+                                        <p class="text-sm">Insufficient documentation claims</p>
+                                    </div>
+                                    <div class="checklist-item bg-yellow-50 border-yellow-200">
+                                        <p class="text-sm">Pre-existing damage allegations</p>
+                                    </div>
+                                    <div class="checklist-item bg-yellow-50 border-yellow-200">
+                                        <p class="text-sm">Maintenance-related exclusions</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Your Options After Denial</h3>
+                        
+                        <div class="timeline-container">
+                            <div class="timeline-item">
+                                <div class="checklist-item">
+                                    <h5 class="font-medium text-gray-800 mb-1">Step 1: Review the Denial Letter</h5>
+                                    <p class="text-sm text-gray-600">Understand exactly why your claim was denied</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="checklist-item">
+                                    <h5 class="font-medium text-gray-800 mb-1">Step 2: Review Your Policy</h5>
+                                    <p class="text-sm text-gray-600">Verify if the denial reason is actually valid</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="checklist-item">
+                                    <h5 class="font-medium text-gray-800 mb-1">Step 3: Contact Your Agent</h5>
+                                    <p class="text-sm text-gray-600">Get professional help interpreting the denial</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="checklist-item">
+                                    <h5 class="font-medium text-gray-800 mb-1">Step 4: Gather Additional Evidence</h5>
+                                    <p class="text-sm text-gray-600">Address any documentation gaps</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="checklist-item">
+                                    <h5 class="font-medium text-gray-800 mb-1">Step 5: File an Appeal</h5>
+                                    <p class="text-sm text-gray-600">Use the insurance company's internal appeal process</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="success-box mt-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-shield-alt text-green-600 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-green-800 mb-2">Why Work with Bill Layne Insurance</h4>
+                                    <p class="text-green-700 text-sm mb-2">
+                                        When your claim is denied, you need someone who understands insurance law and company tactics. 
+                                        We've successfully helped many clients overturn wrongful denials.
+                                    </p>
+                                    <ul class="text-green-700 text-sm space-y-1">
+                                        <li>• We know how to read between the lines</li>
+                                        <li>• We have relationships with insurance company executives</li>
+                                        <li>• We understand policy language and exclusions</li>
+                                        <li>• We can recommend qualified attorneys when needed</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">External Appeal Options</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="checklist-item">
+                                <h5 class="font-medium text-gray-800 mb-2">NC Department of Insurance</h5>
+                                <p class="text-sm text-gray-600 mb-2">File a complaint for unfair practices</p>
+                                <p class="text-xs text-gray-500">Phone: 855-408-1212 | Website: ncdoi.gov</p>
+                            </div>
+                            <div class="checklist-item">
+                                <h5 class="font-medium text-gray-800 mb-2">Legal Action</h5>
+                                <p class="text-sm text-gray-600 mb-2">Consult with an attorney specializing in insurance law</p>
+                                <p class="text-xs text-gray-500">May work on contingency for valid claims</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Professional Help Section -->
+                <section id="professional-help" class="mb-12">
+                    <div class="section-header">
+                        <div class="flex items-center">
+                            <i class="fas fa-hands-helping text-4xl mr-4"></i>
+                            <div>
+                                <h2 class="text-3xl font-bold mb-2">Getting Professional Help</h2>
+                                <p class="text-orange-100">When and how to involve experts</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Your Insurance Agent - Your First Call</h3>
+                        
+                        <div class="success-box">
+                            <div class="text-center">
+                                <h4 class="font-bold text-green-800 mb-4">Bill Layne Insurance Agency</h4>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h5 class="font-semibold text-green-800 mb-3">What We Do For You</h5>
+                                        <ul class="text-green-700 text-sm space-y-1 text-left">
+                                            <li>• Guide you through the entire process</li>
+                                            <li>• Communicate with insurance companies on your behalf</li>
+                                            <li>• Review settlement offers for fairness</li>
+                                            <li>• Help interpret policy language</li>
+                                            <li>• Identify coverage you might have missed</li>
+                                            <li>• Recommend other professionals when needed</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-green-800 mb-3">Why Choose Us</h5>
+                                        <ul class="text-green-700 text-sm space-y-1 text-left">
+                                            <li>• Over 20 years of experience</li>
+                                            <li>• Deep knowledge of NC insurance law</li>
+                                            <li>• Strong relationships with insurers</li>
+                                            <li>• Local Elkin, NC agency</li>
+                                            <li>• We know your coverage personally</li>
+                                            <li>• Available when you need us most</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="mt-6 p-4 bg-white rounded-lg">
+                                    <p class="text-green-800 font-bold text-lg mb-2">Contact Us Immediately After Any Incident</p>
+                                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                        <a href="tel:3368351993" class="inline-flex items-center justify-center bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+                                            <i class="fas fa-phone mr-2"></i> Call (336) 835-1993
+                                        </a>
+                                        <a href="mailto:Save@BillLayneInsurance.com" class="inline-flex items-center justify-center border-2 border-green-600 text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-green-600 hover:text-white transition">
+                                            <i class="fas fa-envelope mr-2"></i> Email Us
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Other Professional Resources</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-3">Public Adjusters</h4>
+                                <div class="checklist-item">
+                                    <p class="text-sm text-gray-600 mb-2"><strong>When to Consider:</strong></p>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Large property damage claims (>$25,000)</li>
+                                        <li>• Complex damage assessment needed</li>
+                                        <li>• Insurance company being unresponsive</li>
+                                        <li>• You feel overwhelmed by the process</li>
+                                    </ul>
+                                    <p class="text-xs text-gray-500 mt-2">Typical fee: 10-15% of settlement</p>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-3">Insurance Attorneys</h4>
+                                <div class="checklist-item">
+                                    <p class="text-sm text-gray-600 mb-2"><strong>When to Consider:</strong></p>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Claim has been wrongfully denied</li>
+                                        <li>• Bad faith practices suspected</li>
+                                        <li>• Significant injury claims</li>
+                                        <li>• Settlement offers are unreasonably low</li>
+                                    </ul>
+                                    <p class="text-xs text-gray-500 mt-2">Many work on contingency for valid claims</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-box mt-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-lightbulb text-blue-600 mr-3 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-blue-800 mb-2">Choosing Professional Help</h4>
+                                    <p class="text-blue-700 text-sm mb-2">
+                                        Always start with your insurance agent. We can often resolve issues without additional costs. 
+                                        If we can't get you a fair settlement, we'll recommend the right professional for your situation.
+                                    </p>
+                                    <ul class="text-blue-700 text-sm space-y-1">
+                                        <li>• Get referrals from trusted sources</li>
+                                        <li>• Check credentials and experience</li>
+                                        <li>• Understand fee structures upfront</li>
+                                        <li>• Get agreements in writing</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Final CTA and Resources -->
+                <section class="mb-12">
+                    <div class="guide-card bg-orange-600 text-white">
+                        <div class="text-center">
+                            <i class="fas fa-clipboard-check text-5xl mb-4 text-orange-200"></i>
+                            <h2 class="text-3xl font-bold mb-4">Ready to Handle Your Next Claim Like a Pro?</h2>
+                            <p class="text-orange-100 mb-6 text-lg">
+                                Bookmark this guide and remember - Bill Layne Insurance is here to help you through every step of the claims process.
+                            </p>
+                            
+                            <div class="grid md:grid-cols-3 gap-4 mb-8">
+                                <div class="text-center">
+                                    <i class="fas fa-phone text-3xl mb-2 text-orange-200"></i>
+                                    <h4 class="font-bold mb-1">Call Immediately</h4>
+                                    <p class="text-orange-100 text-sm">(336) 835-1993</p>
+                                </div>
+                                <div class="text-center">
+                                    <i class="fas fa-camera text-3xl mb-2 text-orange-200"></i>
+                                    <h4 class="font-bold mb-1">Document Everything</h4>
+                                    <p class="text-orange-100 text-sm">Photos, receipts, conversations</p>
+                                </div>
+                                <div class="text-center">
+                                    <i class="fas fa-shield-alt text-3xl mb-2 text-orange-200"></i>
+                                    <h4 class="font-bold mb-1">Stay Calm</h4>
+                                    <p class="text-orange-100 text-sm">We'll guide you through it</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                <a href="tel:3368351993" class="inline-flex items-center justify-center bg-white text-orange-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition text-lg">
+                                    <i class="fas fa-phone mr-2"></i> Call (336) 835-1993
+                                </a>
+                                <a href="./" class="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-orange-600 transition text-lg">
+                                    <i class="fas fa-tools mr-2"></i> More Resources
+                                </a>
+                            </div>
+                            
+                            <div class="mt-8 pt-6 border-t border-orange-400 text-sm text-orange-100">
+                                <p><i class="fas fa-map-marker-alt mr-2"></i>1283 N Bridge St, Elkin NC 28621</p>
+                                <p><i class="fas fa-envelope mr-2"></i>Save@BillLayneInsurance.com</p>
+                                <p><i class="fas fa-globe mr-2"></i>www.BillLayneInsurance.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 no-print">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-4">
+                <img src="https://i.imgur.com/cBAgeX8.png" alt="Bill Layne Insurance Agency" class="h-12 mx-auto mb-4">
+            </div>
+            <p class="text-gray-400 mb-2">© 2025 Bill Layne Insurance Agency. All rights reserved.</p>
+            <p class="text-gray-400">Your advocate in the claims process</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for TOC links
+        document.querySelectorAll('.toc-item').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    // Update active state
+                    document.querySelectorAll('.toc-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Smooth scroll
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight current section in TOC during scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollPos = window.scrollY + 150;
+            
+            sections.forEach(section => {
+                const top = section.offsetTop;
+                const height = section.offsetHeight;
+                const id = section.getAttribute('id');
+                
+                if (scrollPos >= top && scrollPos < top + height) {
+                    document.querySelectorAll('.toc-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    const activeLink = document.querySelector(`.toc-item[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        });
+
+        // Interactive checklist functionality
+        document.querySelectorAll('.interactive-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const parentItem = this.closest('.checklist-item');
+                if (this.checked) {
+                    parentItem.classList.add('completed');
+                } else {
+                    parentItem.classList.remove('completed');
+                }
+                
+                // Save state to localStorage for this session
+                localStorage.setItem(this.id, this.checked);
+            });
+            
+            // Restore checkbox state
+            const saved = localStorage.getItem(checkbox.id);
+            if (saved === 'true') {
+                checkbox.checked = true;
+                checkbox.closest('.checklist-item').classList.add('completed');
+            }
+        });
+
+        // Download checklist functionality
+        function downloadChecklist() {
+            alert('Emergency checklist download functionality would be implemented here. For now, please bookmark this page or print the quick reference section.');
+        }
+
+        // Initialize first section as active
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstTocItem = document.querySelector('.toc-item');
+            if (firstTocItem) {
+                firstTocItem.classList.add('active');
+            }
+        });
+
+        // Print optimization
+        window.addEventListener('beforeprint', function() {
+            // Show all sections when printing
+            document.querySelectorAll('.hidden').forEach(el => {
+                if (!el.classList.contains('no-print')) {
+                    el.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
