@@ -1423,7 +1423,9 @@
             for (let i = 1; i <= 4; i++) {
                 const indicator = document.getElementById(`sidebar-step${i}`);
                 const wrapper = document.getElementById(`sidebar-step${i}-wrapper`);
-                
+
+                if (!indicator || !wrapper) continue;
+
                 if (i < step) {
                     indicator.classList.add('completed');
                     indicator.innerHTML = '<i class="fas fa-check"></i>';
