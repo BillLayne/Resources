@@ -1698,9 +1698,16 @@
             }
         });
 
-        // Handle form input changes
+        // Handle form input changes (change fires on blur for inputs, on selection for selects)
         document.addEventListener('change', function(e) {
             if (e.target.matches('input, select')) {
+                updateNextButton();
+            }
+        });
+
+        // Handle real-time typing in number/text inputs (enables button as user types)
+        document.addEventListener('input', function(e) {
+            if (e.target.matches('input')) {
                 updateNextButton();
             }
         });
